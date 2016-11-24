@@ -1,0 +1,331 @@
+﻿@using DothanTech.BaoJia.Module;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "自助报价";
+
+    List<Product> Products = ViewBag.Products;
+    List<Brand> Brands = ViewBag.Brands;
+    List<DeliveryArea> DeliveryAreas = ViewBag.DeliveryAreas;
+    List<DeliveryMode> DeliveryModes = ViewBag.DeliveryModes;
+    List<String> TaxOrNot = ViewBag.TaxOrNot;
+    List<TechnologyRequest> TechnologyRequests = ViewBag.TechnologyRequests;
+    List<PrintColor> PrintColors = ViewBag.PrintColors;
+    List<SpecialColor> SpecialColors = ViewBag.SpecialColors;
+    List<BackChannel> BackChannels = ViewBag.BackChannels;
+}
+
+<!--样式-->
+<link rel="stylesheet" href="~/CSS/jquery.mobile-1.4.5.min.css" />
+<style>
+    li > input, li > select {
+        width: 65%;
+    }
+</style>
+
+<!--脚本-->
+<script src="~/Script/jquery.min.js"></script>
+<!--下列脚本用于解决Chrome浏览器无法显示的问题，注意该脚本的位置位于 jquery.js与jquery.mobile.js中间。-->
+<script>
+	$(document).bind('mobileinit',function(){
+		$.mobile.pushStateEnabled = false;
+	});
+</script>
+<script src="~/Script/jquery.mobile-1.4.5.min.js"></script>
+<!--数据处理-->
+<script>
+    $(function () {
+        // Product选择事件；
+
+        // Brand(品牌)选择事件；
+        $("#brand").change(function () {
+            $.get("ProductModule/GetListByBrandId", {
+                id:$(this).val()
+            }, function (data) {
+                if (data == "") {
+                    $("#product-module").html("<option>--没有数据--</option>");
+                }
+                else {
+                    $("#product-module").html(data);
+                    $("#product-module").trigger("change");
+                }
+            })
+        });
+
+        // 初始化相关数据
+        $.get("#", null, function () {
+            // 解析JsonArray字符串
+            var datas = eval(data);
+            var results = null;
+            $.each(data, function () {
+                options += ("<option>" + this.productName + "</option>");
+            });
+
+            $("#product").html(results);
+        }, "json");
+        
+
+        $("#commit-data").click(function () {
+            alert("commit data");
+        });
+
+        $("#more-data").click(function () {
+            alert("more data");
+        });
+
+        // 初始化完毕
+        onInitFinish();
+    });
+
+    function onInitFinish() {
+        $("#brand").trigger("change");
+    }
+
+</script>
+<div data-role="page">        
+	<div data-role="header" id="header" data-theme="b">
+        <h3>自助报价</h3>
+        <a href="#" id="more-data" class="ui-btn ui-btn-right ui-btn-inline ui-btn-corner-all ui-mini ui-btn-icon-right ui-icon-gear ui-btn-icon-notext">其他</a>
+    </div>
+
+    <div data-role="content" id="main">
+        <form>
+            <!--物料材质-->
+            <ul data-role="listview" data-inset="true">
+            	<li data-role="list-divider" data-split-theme="b">物料材质</li>
+                <li class="ui-field-contain">
+                	<label for="product">品名</label>
+                    <select id="product">
+                        @{
+                            if (Products != null && Products.Count > 0) {
+                                foreach(Product item in Products) {
+                                    <option value="@item.Id">@item.ProductName</option>
+                                }
+                            } else {
+                                <option>--没有数据--</option>
+                            }
+                        }
+                    </select>
+                </li>
+                <li class="ui-field-contain">
+                	<label for="brand">品牌</label>
+                    <select id="brand">
+                        @{
+                            if (Brands != null && Brands.Count > 0) {
+                                foreach(Brand item in Brands) {
+                                    <option value="@item.Id">@item.BrandName</option>
+                                }
+                            } else {
+                                <option>--没有数据--</option>
+                            }
+                        }
+                    </select>
+                </li>
+                <li class="ui-field-contain">
+                	<label for="product-module">型号</label>
+                    <select id="product-module">
+                    	@{
+                            
+                        }
+                    </select>
+                </li>
+            </ul>
+            
+            <!--标签大小-->
+            <ul data-role="listview" data-inset="true">
+            	<li data-role="list-divider" data-split-theme="b">标签大小</li>
+                <li class="ui-field-contain">
+                	<label for="label-size-width">长(MM)</label>
+                    <input id="label-size-width" type="number"/>
+                </li>
+                <li class="ui-field-contain">
+                	<label for="label-size-height">宽(MM)</label>
+                    <input id="label-size-height" type="number"/>
+                </li>
+                <li class="ui-field-contain" data-role="collapsible" data-expanded-icon="carat-u" data-collapsed-icon="carat-d">
+                	<h4>更多</h4>
+                    <ul data-role="listview">
+                    	<li class="ui-field-contain">
+                			<label for="label-size-margin-left">左边距(MM)</label>
+                    		<input id="label-size-margin-left" type="number"/>
+                		</li>
+                    	<li class="ui-field-contain">
+                			<label for="label-size-margin-right">右边距(MM)</label>
+                    		<input id="label-size-margin-right" type="number"/>
+                		</li>
+                    	<li class="ui-field-contain">
+                			<label for="label-size-margin-top">上边距(MM)</label>
+                    		<input id="label-size-margin-top" type="number"/>
+                		</li>
+                    	<li class="ui-field-contain">
+                			<label for="label-size-margin-bottom">下边距(MM)</label>
+                    		<input id="label-size-margin-bottom" type="number"/>
+                		</li>
+                    </ul>
+                </li>
+            </ul>
+            
+        	<!--数量-->
+        	<ul data-role="listview" data-inset="true">
+            	<li data-role="list-divider" data-split-theme="b">数量</li>
+            	<li class="ui-field-contain">
+                	<label for="quantity-of-single">单笔数量(PCM)</label>
+                    <input id="quantity-of-single" type="number"/>
+                </li>
+            	<li class="ui-field-contain">
+                	<label for="quantity-per-roll">每卷数量(PCM)</label>
+                    <input id="quantity-per-roll" type="number"/>
+                </li>
+            </ul>
+            
+            <!--发货-->
+            <ul data-role="listview" data-inset="true">
+                <li data-role="list-divider" data-split-theme="b">物流</li>
+                <li class="ui-field-contain">
+                    <label for="date-of-shipment">发货日期</label>
+                    <input id="date-of-shipment" type="date"/>
+                </li>
+                <li class="ui-field-contain">
+                    <label for="area-of-delivery">收货地区</label>
+                    <select id="area-of-delivery">
+                    @{
+                        if (DeliveryAreas != null && DeliveryAreas.Count > 0)
+                        {
+                            foreach (DeliveryArea item in DeliveryAreas)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        }
+                        else
+                        {
+                            <option>--没有数据--</option>
+                        }
+                    }
+                    </select>
+                </li>
+                <li class="ui-field-contain">
+                    <label for="transportation">运输方式</label>
+                    <select id="transportation">
+                        @{
+                            if (DeliveryModes != null && DeliveryModes.Count > 0)
+                            {
+                                foreach (DeliveryMode item in DeliveryModes)
+                                {
+                                    <option value="@item.Id">@item.ModeName</option>
+                                }
+                            }
+                            else
+                            {
+                                <option>--没有数据--</option>
+                            }
+                        }
+                    </select>
+                </li>
+            </ul>
+
+            <!--其他-->
+            <ul data-role="listview" data-inset="true">
+                <li data-role="list-divider" data-split-theme="b">其他</li>
+                <li class="ui-field-contain">
+                    <label for="technology-request">工艺要求</label>
+                    <select id="technology-request">
+                        @{
+                            if (TechnologyRequests != null && TechnologyRequests.Count > 0)
+                            {
+                                foreach (TechnologyRequest item in TechnologyRequests)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            }
+                            else
+                            {
+                                <option>--没有数据--</option>
+                            }
+                        }
+                    </select>
+                </li>
+                <li class="ui-field-contain">
+                    <label for="tax-or-not">是否含税</label>
+                    <select id="tax-or-not">
+                        @{
+                            if (TaxOrNot != null && TaxOrNot.Count > 0)
+                            {
+                                foreach (String item in TaxOrNot)
+                                {
+                                    <option>@item</option>
+                                }
+                            }
+                            else
+                            {
+                                <option>--没有数据--</option>
+                            }
+                        }
+                    </select>
+                </li>
+            </ul>
+
+            <!--颜色-->
+            <ul data-role="listview" data-inset="true">
+                <li data-role="list-divider" data-split-theme="b">颜色</li>
+                <li class="ui-field-contain">
+                    <label for="product-color">颜色</label>
+                    <select id="product-color">
+                        @{
+                            if (PrintColors != null && PrintColors.Count > 0)
+                            {
+                                foreach (PrintColor item in PrintColors)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            }
+                            else
+                            {
+                                <option>--没有数据--</option>
+                            }
+                        }
+                    </select>
+                </li>
+                <li class="ui-field-contain">
+                    <label for="special-color">专色</label>
+                    <select id="special-color">
+                        @{
+                            if (SpecialColors != null && SpecialColors.Count > 0)
+                            {
+                                foreach (SpecialColor item in SpecialColors)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            }
+                            else
+                            {
+                                <option>--没有数据--</option>
+                            }
+                        }
+                    </select>
+                </li>
+                <li class="ui-field-contain">
+                    <label for="back-channel">后道</label>
+                    <select id="back-channel">
+                        @{
+                            if (BackChannels != null && BackChannels.Count > 0)
+                            {
+                                foreach (BackChannel item in BackChannels)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            }
+                            else
+                            {
+                                <option>--没有数据--</option>
+                            }
+                        }
+                    </select>
+                </li>
+            </ul>
+
+            <!--确定提交-->
+            <input type="button" id="commit-data" value="确定" data-theme="b"/>
+
+        </form>
+    </div>
+</div>
+

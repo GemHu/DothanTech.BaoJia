@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="250f1125c40345a89b8a94310236a4da" Name="Diagram1">
+        <EntityTypeShape EntityType="BaoJiaModel.BackChannel" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="BaoJiaModel.Brand" Width="1.5" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="BaoJiaModel.DeliveryArea" Width="1.5" PointX="2.75" PointY="4.75" />
+        <EntityTypeShape EntityType="BaoJiaModel.DeliveryMode" Width="1.5" PointX="4.75" PointY="4.75" />
+        <EntityTypeShape EntityType="BaoJiaModel.PrintColor" Width="1.5" PointX="6.75" PointY="4.75" />
+        <EntityTypeShape EntityType="BaoJiaModel.Product" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BaoJiaModel.ProductModule" Width="1.5" PointX="5.25" PointY="0.875" />
+        <EntityTypeShape EntityType="BaoJiaModel.RecommandTable" Width="1.5" PointX="0.75" PointY="1.25" />
+        <EntityTypeShape EntityType="BaoJiaModel.SpecialColor" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="BaoJiaModel.TechnologyRequest" Width="1.5" PointX="2.75" PointY="7.75" />
+        <AssociationConnector Association="BaoJiaModel.FK_Brand_Id" />
+        <AssociationConnector Association="BaoJiaModel.FK_Brand_ToRecommand" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,277 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8"  />
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<title>自助报价</title>
+
+    <!--<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+    <link rel="stylesheet" href="../../CSS/bootstrap.css" />
+    <script src="../../Script/jquery.js"></script>
+    <script src="../../Script/bootstrap.js"></script>
+    <style>
+		body{
+			background-color:#19BC9C;
+		}
+		
+		#page-header{
+			width:100%;
+			height:0px;
+			background-color:#F90;
+			position:fixed;
+		}
+		#page-container{
+		}
+		
+		.input-item-name{
+		}
+		.input-item-unit{
+		}
+		.input-group-baojia{
+			
+		}
+		
+		.baojia-btn-block{
+			
+		}
+	</style>
+    
+</head>
+<body>
+	<!--导航栏-->
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="container-fluid"> 
+			<div class="navbar-header"> 
+            	<h1 class="navbar-brand">自助报价</h1>
+        	</div>
+            <ul class="nav navbar-nav navbar-right">
+            	<li><a href="#"><span class="glyphicon glyphicon-user"></span>更多</a></li>
+            </ul>
+	    </div>
+    </nav>
+    <!-- 标题栏-->
+    <div id="page-header">
+    	
+    </div>
+    <section id="page-container">
+        <div id="form-container" class="col-xs-12 col-sm-5 col-lg-4 pull-right">
+            <form>
+            <!--物料材质-->
+            <div class="panel panel-primary">
+            	<div class="panel-heading">物料材质</div>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                	<div class="input-group">
+                		<span class="input-group-addon input-item-name">品名</span>
+                    	<select id="product-name" class="form-control">
+                    		<option>item1</option>
+                    	</select>
+                    </div>
+                </li>	
+                <li class="list-group-item">
+                	<div class="input-group">
+                	<span class="input-group-addon input-item-name">品牌</span>
+                    <select id="brand-name" class="form-control">
+                    	<option>item1</option>
+                    </select>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                	<div class="input-group">
+                	<span class="input-group-addon input-item-name">型号</span>
+                    <select id="product-type" class="form-control">
+                    	<option>item1</option>
+                    </select>
+                    </div>
+                </li>
+                </ul>
+            </div>
+            
+            <!--标签大小-->
+            <div class="panel panel-primary">
+            	<div class="panel-heading">标签大小</div>
+                <ul class="list-group input-group-baojia">
+                    <li class="list-group-item">
+                        <div class="input-group">
+                            <span class="input-group-addon">长</span>
+                            <input class="form-control" type="number" />
+                            <span class="input-group-addon">MM</span>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="input-group">
+                            <span class="input-group-addon">宽</span>
+                            <input class="form-control" type="number"/>
+                            <span class="input-group-addon">MM</span>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <h4>更多</h4>
+                        <!--<ul data-role="listview">
+                            <li class="ui-field-contain">
+                                <label for="label-size-margin-left">左边距(MM)</label>
+                                <input id="label-size-margin-left" type="number"/>
+                            </li>
+                            <li class="ui-field-contain">
+                                <label for="label-size-margin-right">右边距(MM)</label>
+                                <input id="label-size-margin-right" type="number"/>
+                            </li>
+                            <li class="ui-field-contain">
+                                <label for="label-size-margin-top">上边距(MM)</label>
+                                <input id="label-size-margin-top" type="number"/>
+                            </li>
+                            <li class="ui-field-contain">
+                                <label for="label-size-margin-bottom">下边距(MM)</label>
+                                <input id="label-size-margin-bottom" type="number"/>
+                            </li>
+                        </ul>-->
+                    </li>
+                </ul>
+            </div>
+            
+        	<!--数量-->
+            <div class="panel panel-primary">
+            	<div class="panel-heading">数量</div>
+                <ul class="list-group input-group-baojia">
+                    <li class="list-group-item">
+                        <div class="input-group">
+                            <span class="input-group-addon">单笔数量</span>
+                            <input class="form-control" type="number"/>
+                            <span class="input-group-addon">PCM</span>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="input-group">
+                            <span class="input-group-addon">没卷数量</span>
+                            <input class="form-control" type="number"/>
+                            <span class="input-group-addon">PCM</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <!--发货-->
+            <div class="panel panel-primary">
+            	<div class="panel-heading">物流</div>
+                <ul class="list-group input-group-baojia">
+                    <li class="list-group-item">
+                        <div class="input-group">
+                            <span class="input-group-addon">发货日期</span>
+                            <input class="form-control" type="date"/>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="input-group">
+                            <span class="input-group-addon">收货地区</span>
+                            <select class="form-control">
+                                <option>item1</option>
+                            </select>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="input-group">
+                            <span class="input-group-addon">运输方式</span>
+                            <select class="form-control">
+                                <option>item</option>
+                            </select>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <!--其他-->
+            <div class="panel panel-primary">
+            	<div class="panel-heading">其他</div>
+                <ul class="list-group input-group-baojia">
+                    <li class="list-group-item">
+                        <div class="input-group">
+                            <span class="input-group-addon">工艺要求</span>
+                            <select class="form-control"></select>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="input-group">
+                            <span class="input-group-addon">是否含税</span>
+                            <select class="form-control"></select>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!--颜色-->
+            <div class="panel panel-primary">
+            	<div class="panel-heading">颜色</div>
+                <ul class="list-group input-group-baojia">
+                    <li class="list-group-item">
+                        <div class="input-group">
+                            <span class="input-group-addon">颜色</span>
+                            <select class="form-control"></select>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="input-group">
+                            <span class="input-group-addon">专色</span>
+                            <select class="form-control"></select>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="input-group">
+                            <span class="input-group-addon">后道</span>
+                            <select class="form-control"></select>
+                        </div>
+                    </li>  
+                </ul>
+            </div>
+            
+            <!--确定提交-->
+            <div class="baojia-btn-block">
+	            <button type="button" class="btn btn-primary btn-block">确定</button>
+            </div>
+           </form>
+        </div>
+        
+        <div class="col-sm-7 container">
+        	<!-- 报价须知 -->
+        	<div class="panel panel-info">
+            	<div class="panel-heading">
+                	<h3 class="panel-title">
+                    	<a data-toggle="collapse" data-target="#baojiaxuzhi-info">报价须知</a>
+                    </h3>
+                </div>
+                <div class="panel-collapse collapse in">
+	                <div class="panel-body" id="baojiaxuzhi-info">
+    	                <p>报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知报价须知</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 材料说明 -->
+            <div class="panel panel-info">
+            	<div class="panel-heading">
+                	<h3 class="panel-title">材料说明</h3>
+                </div>
+                <div class="panel-body">
+                	<p>材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明材料说明</p>
+                </div>
+            </div>
+            
+            <!-- 折扣标签规格 -->
+            <div class="panel panel-info">
+            	<div class="panel-heading">
+                	<h3 class="panel-title">折扣标签规格</h3>
+                </div>
+                <div class="panel-body">
+                	<p>折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格折扣标签规格</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+    	<div id="footer-copyright" class="row">
+        	<div class="text-center">Cobyright</div>
+        </div>
+    </footer>
+</body>
+</html>
